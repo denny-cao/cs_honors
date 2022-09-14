@@ -31,7 +31,7 @@ public class GrowSquarePrinter {
 
         this.shape.translate(h, v);     // Maintain Same Upper-Left Corner
     }
-    
+
     public static void main(String[] args) { 
         /*
         Write a GrowSquarePrinter program that constructs a Rectangle object square
@@ -50,11 +50,10 @@ public class GrowSquarePrinter {
         Point pos = new Point(100, 100);
         GrowSquarePrinter rect = new GrowSquarePrinter(dims, pos);
 
-        rect.printLocation();
-
+        rect.printLocation();       // Print first rectangle with original dimensions
   
         rect.growSameCorner(dims.width / 2, dims.height / 2);       // Twice size, same upper-left corner
 
-        rect.printLocation();
+        rect.printLocation();       // Print new rectangle with dobule dimensions
     }
 }
