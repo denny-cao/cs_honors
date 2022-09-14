@@ -17,26 +17,21 @@ public class Triangle {
     }
 
     public double area() {
-        double semiPerm = perimeter() / 2;
+        /* Compute area using Heron's formula
+         * https://www.mathsisfun.com/geometry/herons-formula.html
+         */
+
+        double semiPerm = this.perimeter() / 2;
 
         return Math.sqrt(semiPerm * (semiPerm - this.side1) * (semiPerm - this.side2) * (semiPerm - this.side3));
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.print("Enter side 1: ");
-        double side1 = scanner.nextDouble();
-        System.out.print("Enter side 2: ");
-        double side2 = scanner.nextDouble();
-        System.out.print("Enter side 3: ");
-        double side3 = scanner.nextDouble();
+    public static void main(String args[]) {
+        double side1 = Double.parseDouble(args[0]);
+        double side2 = Double.parseDouble(args[1]);
+        double side3 = Double.parseDouble(args[2]);
 
-        scanner.close();
-
-         Triangle tri = new Triangle(side1, side2, side3);
-
+        Triangle tri = new Triangle(side1, side2, side3);
         System.out.println(tri.area());
     }
 }
- 
