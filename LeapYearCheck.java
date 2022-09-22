@@ -51,23 +51,13 @@ public class LeapYearCheck {
 
         int tense = yearGap == 0 ? 0 : yearGap / Math.abs(yearGap);
 
-        if (tense == 0) {
-            fill = "is";
-        }
-        else if (tense > 0) {
-            fill = "will";
-        }
-        else {
-            fill = "was";
-        }
+        if (tense == 0) fill = "is";
+        else if (tense > 0) fill = "will";
+        else fill = "was";
 
-        if (!this.isLeap()) {
-            fill += " not";
-        }
+        if (!this.isLeap()) fill += " not";
 
-        if (tense > 0) {
-            fill += " be";
-        }
+        if (tense > 0) fill += " be";
 
         System.out.printf("%d %s a leap year. \n", this.year, fill);
         
@@ -98,7 +88,7 @@ public class LeapYearCheck {
          * before 1586: divisible by 4
          * after 1586: check if divisible by 4 then check further... also divisible by 100 -> Dount count as leap year
          divisible by 400: regardless divisible by 100, still count as leap
-         * Goal: Ask input number has to be 4 dgiit number and represents a year. figure out if was a leap year, will be a leap year, or not
+         * Goal: Ask input number has to be 4 digit number and represents a year. figure out if was a leap year, will be a leap year, or not
          */
 
         LeapYearCheck leapCheck = new LeapYearCheck();
