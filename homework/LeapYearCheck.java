@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.lang.Math;
 
 public class LeapYearCheck {
-    final static int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    final static int CURRENTYEAR = Calendar.getInstance().get(Calendar.YEAR);
     private int year;
 
     public LeapYearCheck() {
@@ -40,13 +40,13 @@ public class LeapYearCheck {
 
         String fill;
 
-        int yearGap = this.year - currentYear;
+        int yearGap = this.year - CURRENTYEAR;
         
         /*
          * tense:
-         *  1: future
-         *  0: past
-         *  -1: current
+         *   1: future
+         *   0: current
+         *  -1: past
          */
 
         int tense = yearGap == 0 ? 0 : yearGap / Math.abs(yearGap);
