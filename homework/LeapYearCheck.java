@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.Calendar;
-import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.lang.Math;
 
 public class LeapYearCheck {
@@ -27,7 +27,7 @@ public class LeapYearCheck {
             else {
                 setYear();
             }
-        } catch (InputMismatchException e) {
+        } catch (NoSuchElementException e) {
             scan.close();
             setYear();
         }
@@ -71,7 +71,7 @@ public class LeapYearCheck {
         /*
          * Returns if the input year is Gregorian. Otherwise, it is Julian.
          */
-        return this.year >= 1586;
+        return this.year >= 1582;
     }
 
     public boolean isGregLeap() {
@@ -83,10 +83,11 @@ public class LeapYearCheck {
     }
 
     public static void main(String[] args) {
-        /* Leap Year 1900 / 4 not leap year... 2100 / 4 not leap year
+        /* 
+         * Leap Year 1900 / 4 not leap year... 2100 / 4 not leap year
          * 6 hours 11 mins
-         * before 1586: divisible by 4
-         * after 1586: check if divisible by 4 then check further... also divisible by 100 -> Dount count as leap year
+         * before 1582: divisible by 4
+         * after 1582: check if divisible by 4 then check further... also divisible by 100 -> Dount count as leap year
          divisible by 400: regardless divisible by 100, still count as leap
          * Goal: Ask input number has to be 4 digit number and represents a year. figure out if was a leap year, will be a leap year, or not
          */
