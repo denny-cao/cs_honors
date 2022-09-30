@@ -45,7 +45,7 @@ public class RomanNumerals {
 
         if (scan.hasNextInt()) {
             int temp = scan.nextInt();
-            if (temp >= 3999 && temp <= 0) {
+            if (temp >= 3999 || temp <= 0) {
                 System.out.println("Integer must be between 0 and 3999!");
                 setNum();
             }
