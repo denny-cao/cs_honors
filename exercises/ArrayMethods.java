@@ -13,16 +13,19 @@ public class ArrayMethods {
     
     public void printArray(String exercise) {
         /* Print the current values array. Takes exercise descriptor as input. */
+
         System.out.println(exercise + ": " + Arrays.toString(this.values));
     }
 
     public void resetArray() {
         /* Reset array to original. */
+
         this.values = Arrays.copyOf(this.copy, this.copy.length);
     }
 
     public void swapFirstLast() {
         /* Exercise a. Swap first and last elements in the array. */
+
         this.values[0] = this.values[this.lastIndex];
         this.values[this.lastIndex] = this.copy[0];
 
@@ -32,6 +35,7 @@ public class ArrayMethods {
 
     public void shiftRight() {
         /* Exercise b. Shift all elements by one to the right and move the last element into the first position. */
+
         for (int i = this.lastIndex; i > 0; i--) {this.values[i] = this.values[i-1];}
 
         this.values[0] = this.copy[this.lastIndex]; // Place last element in first index
@@ -52,6 +56,7 @@ public class ArrayMethods {
 
     public void largestNeighbor() {
         /* Exercise d. Replace each element except the first and last by the larger of its two neighbors. */
+        
         for (int i = 1; i < this.lastIndex; i++) {
             if (this.copy[i - 1] >= this.copy[i + 1]) {this.values[i] = this.copy[i - 1];}
             else {this.values[i] = this.copy[i + 1];}
