@@ -1,4 +1,3 @@
-import java.lang.Math;
 import java.util.*;
 
 public class ArrayMethods {
@@ -79,7 +78,7 @@ public class ArrayMethods {
 
         // Second half
         for (int i = lowerBoundSecond + 1; i < this.values.length; i++) {
-            int currentIndex = this.values.length % 2 == 0 ? i - 2 : i - 1;
+            int currentIndex = this.values.length % 2 == 0 ? i - 2 : i - 1; // If even, subtract 2, else subtract 1
             temp[currentIndex] = this.values[i];
         }
 
@@ -94,12 +93,14 @@ public class ArrayMethods {
         
         int tempIndex = 0;
 
+        // Move evens to front
         for (int i = 0; i < this.values.length; i++) {
             if (this.copy[i] % 2 == 0) {this.values[tempIndex++] = this.copy[i];}
         }
 
+        // Move odds behind evens
         for (int i = 0; i < this.values.length; i++) {
-            if (this.copy[i] % 2 != 0) {this.values[tempIndex++] = this.copy[i];}
+            if (this.copy[i] % 2 != 0) {this.values[tempIndex++] = this.copy[i];} 
         }
 
         this.printArray("move even elements to front");
@@ -109,11 +110,14 @@ public class ArrayMethods {
     public int secondLargest() {
         /* Exercise g. Return the second-largest element in the array. */
         
-        int max = Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE; 
         int secondMax = Integer.MIN_VALUE;
 
         for (int i = 0; i < this.values.length; i++) {
-            if (this.values[i] > max) {secondMax = max; max = this.values[i];}
+            if (this.values[i] > max) {
+                secondMax = max;
+                max = this.values[i];
+            }
             else if (this.values[i] <= max && this.values[i] > secondMax) {secondMax = this.values[i];}
         }
 
