@@ -1,86 +1,39 @@
-import java.lang.Math;
+import java.util.Random;
 
-public class ArrayMethods {
-    private int[] values;
-    private final int lastIndex = values.length - 1;
+public class ArrayExercise_7_2 {
+    final static int MAXSIZE = 10;
+    final static int MINSIZE = 2;
+    final static int MAXELEMENT = 100;
 
-    public ArrayMethods(int[] initialValues) {
-        this.values = initialValues;
-    }
-    
-    public void printArray(String exercise) {
-        System.out.printf("%s: ", exercise);
-        for (int num : values) {
-            System.out.print(num);
-        }
-        System.out.println();
-    }
+    public static int[] populateArray() {
+        /* Populate array with random integers. */
 
-    public void swapFirstLast() {
-        int temp = this.values[0];
+        Random rand = new Random();
 
-        this.values[0] = this.values[this.lastIndex];
-        this.values[this.lastIndex] = temp;
+        int arraySize = rand.nextInt(MAXSIZE - MINSIZE + 1) + MINSIZE; // Random array size between MINSIZE and MAXSIZE
+        
+        int[] nums = new int[arraySize]; 
+
+        for (int i = 0; i < arraySize; i++) {nums[i] = rand.nextInt(MAXELEMENT + 1);} // Random numbers between 0 and MAXELEMENT
+
+        return nums;
     }
 
-    public void shiftRight() {
-        int temp = this.values[this.lastIndex]; // Last element
+    public static void main(String[] args) {
+        int[] nums = populateArray();
 
-        for (int i = this.lastIndex; i > 0; i--) {
-            this.values[i] = this.values[i-1];
-        }
+        ArrayMethods exercise = new ArrayMethods(nums); 
 
-        this.values[0] = temp; // Place last element in first index
+        exercise.printArray("Original"); 
+        exercise.swapFirstLast();
+        exercise.shiftRight();
+        exercise.zeroEvenElements();
+        exercise.largestNeighbor();
+        exercise.removeMiddle();
+        exercise.bubbleEven();
+        System.out.printf("The second largest element is: %d\n", exercise.secondLargest());
+        System.out.printf("Array is sorted: %b\n", exercise.isSorted());
+        System.out.printf("Array contains adjacent duplicates: %b\n", exercise.containsAdjacentDuplicates());
+        System.out.printf("Array contains duplicates: %b\n", exercise.containsDuplicates());
     }
-
-    public void zeroEvenElements() {
-        for (int i = 0; i < this.lastIndex; i++) {
-            if (this.values[i] % 2 == 0) {
-                this.values[i] = 0;
-            }
-        }
-    }
-
-    public void largestNeighbor() {
-        for (int i = 1; i < this.lastIndex - 1; i++) {
-            if (this.values[i - 1] >= this.values[i + 1]) {
-                this.values[i] = this.values[i - 1];
-            }
-            else {
-                this.values[i] = this.values[i + 1];
-            }
-        }
-    }
-
-    public void removeMiddle() {
-        int skip = 0;
-
-        if (this.values.length % 2 == 0) {
-            int[] temp = new int[this.values.length - 2];
-            
-            for (int i = 0; i < this.lastIndex; i++) {
-                if (i != (this.values.length / 2) || i != (this.values.length / 2 - 1)) {
-                    temp[i + skip] = this.values[i];
-                }
-                else {
-                    skip++;
-                }
-            }
-        }
-
-        else {
-            int[] temp = new int[this.lastIndex];
-
-            for (int i = 0; i < this.lastIndex; i++) {
-                if (i != this.lastIndex / 2) {
-                    temp[i + step] = this.values[i];
-                }
-                else {
-                    step++;
-                }
-            }
-        }
-    }
-
-    public 
 }
