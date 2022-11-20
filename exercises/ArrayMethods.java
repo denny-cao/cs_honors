@@ -56,7 +56,7 @@ public class ArrayMethods {
 
     public void largestNeighbor() {
         /* Exercise d. Replace each element except the first and last by the larger of its two neighbors. */
-        
+
         for (int i = 1; i < this.lastIndex; i++) {
             if (this.copy[i - 1] >= this.copy[i + 1]) {this.values[i] = this.copy[i - 1];}
             else {this.values[i] = this.copy[i + 1];}
@@ -108,7 +108,7 @@ public class ArrayMethods {
             if (this.copy[i] % 2 != 0) {this.values[tempIndex++] = this.copy[i];} 
         }
 
-        this.printArray("move even elements to front");
+        this.printArray("Move even elements to front");
         this.resetArray();
     }
 
