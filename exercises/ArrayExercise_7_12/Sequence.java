@@ -18,31 +18,27 @@ public class Sequence {
     public boolean isPermutation(Sequence other) {
         /* Check if sequence is a permutation */
 
-        // Check if both sequences are the same length
-        if (this.getLength() != other.getLength()) {
-            return false;
-        }
+        // Check if same length
+        if (this.getLength() != other.getLength()) {return false;}
 
-        // Create an array with size MAXELEMENT + 1 to store the number of times each element appears
-        int[] count = new int[SequenceTester.MAXELEMENT + 1];
+        // Create HashMap to store occurrences of each element for one sequence
+        HashMap<Integer, Integer> occurrences = new HashMap<Integer, Integer>();
 
-        // Loop through first sequence and increment the count of each element
+        // Populate HashMap with occurrences
         for (int i = 0; i < this.getLength(); i++) {
-            count[this.values[i]]++;
+            if (occurrences.containsKey(this.values[i])) {occurrences.put(this.values[i], occurrences.get(this.values[i]) + 1);} 
+            else {occurrences.put(this.values[i], 1);}
         }
 
-        // Loop through second sequence and decrement the count of each element
+        // Check if other sequence has the same occurrences
         for (int i = 0; i < other.getLength(); i++) {
-            count[other.values[i]]--;
+            if (occurrences.containsKey(other.values[i])) {
+                if (occurrences.get(other.values[i]) == 0) {return false;} 
+                else {occurrences.put(other.values[i], occurrences.get(other.values[i]) - 1);}
+            } 
+            else {return false;}
         }
 
-        // Check if all elements have a count of 0
-        for (int i = 0; i < count.length; i++) {
-            if (count[i] != 0) {
-                return false;
-            }
-        }
         return true;
     }
-
 }
