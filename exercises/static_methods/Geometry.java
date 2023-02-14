@@ -1,18 +1,10 @@
 import java.util.Scanner;   
-
-/*
- * Write static methods:
- * cubeVolume(double h)
- * cubeSurface(double h)
- * sphereVolume(double r)
- * sphereSurface(double r)
- * cylinderVolume(double r, double h)
- * cylinderSurface(double r, double h)
- * coneVolume(double r, double h)
- * coneSurface(double r, double h)
- */
+import java.awt.geom.Point2D;
+import java.awt.geom.Ellipse2D;
 
 public class Geometry {
+    // Exercise 8.5
+    
     public static double cubeVolume(double h) {
         return h * h * h;
     }
@@ -44,39 +36,39 @@ public class Geometry {
     public static double coneSurface(double r, double h) {
         return Math.PI * r * (r + Math.sqrt(h * h + r * r));
     }
-    
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
 
-        // Input validation. Double only. Prompt for r and h.
+    // Exercise 8.9
 
-        System.out.print("Enter a number for radius: ");
+    public static double perimeter(Ellipse2D.Double e) {
+        double a = e.width;
+        double b = e.height;
 
-        while (!scan.hasNextDouble()) {
-            System.out.println("Invalid input. Enter a number: ");
-            scan.next();
-        }
+        double h = Math.pow((a - b) / (a + b), 2);
+        
+        // Ramanujan's approximation for the perimeter of an ellipse
+        
+        return Math.PI * (a + b) * (1 + 3 * h / (10 + Math.sqrt(4 - 3 * h)));
 
-        double r = scan.nextDouble();
-
-        System.out.print("Enter a number for height: ");
-
-        while (!scan.hasNextDouble()) {
-            System.out.println("Invalid input. Enter a number: ");
-            scan.next();
-        }
-
-        double h = scan.nextDouble();
-
-        // Print results
-
-        System.out.println("Cube volume: " + cubeVolume(h));
-        System.out.println("Cube surface: " + cubeSurface(h));
-        System.out.println("Sphere volume: " + sphereVolume(r));
-        System.out.println("Sphere surface: " + sphereSurface(r));
-        System.out.println("Cylinder volume: " + cylinderVolume(r, h));
-        System.out.println("Cylinder surface: " + cylinderSurface(r, h));
-        System.out.println("Cone volume: " + coneVolume(r, h));
-        System.out.println("Cone surface: " + coneSurface(r, h));
     }
+
+    public static double area(Ellipse2D.Double e) {
+        return Math.PI * e.width * e.height;
+    }
+
+    // Exercise 8.10
+
+    public static double angle(Point2D.Double p, Point2D.Double q) {
+        // Angle between the x-axis and the line joining two points, measured in degrees
+
+        double angle = Math.toDegrees(Math.atan2(Math.abs(q.y - p.y), Math.abs(q.x - p.x)));
+
+        return angle;
+    }
+
+    public static double slope(Point2D.Double p, Point2D.Double q) {
+        // Slope of the line joining two points
+
+        return (q.y - p.y) / (q.x - p.x);
+    }
+
 }
