@@ -24,7 +24,11 @@ public class Game {
         positionArray[1] = position.toLowerCase().charAt(0) - 'a'; // Column
         return positionArray;
     }
-
+    
+    /**
+     * Method to add a piece to the graveyard of the respective player
+     * @param piece Piece to be added to the graveyard
+     */
     public void capturePiece(Piece piece) {
         if (piece.getIsWhite()) {
             whiteGraveyard.add(piece);

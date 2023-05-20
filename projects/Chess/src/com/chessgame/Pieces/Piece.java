@@ -34,7 +34,7 @@ public class Piece {
     public void setIsWhite(boolean isWhite) {
         this.isWhite = isWhite;
     }
-
+    
     public boolean isLegalMove(Piece[][] board, int[] startPos, int[] endPos) {
 
         // Check if the end position is out of bounds
