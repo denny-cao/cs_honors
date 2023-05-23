@@ -12,6 +12,8 @@ public class Game {
     public static ArrayList<Piece> whiteGraveyard = new ArrayList<Piece>();
     public static ArrayList<Piece> blackGraveyard = new ArrayList<Piece>();
 
+    public boolean isWhiteTurn = true;
+
     /**
      * Method to change string representation of position of piece to row and column values
      * @param position String representation of position of piece
@@ -129,5 +131,24 @@ public class Game {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Method to check if the game is over
+     * @param board Piece[][] array representing the board
+     * @return boolean value to determine if the game is over
+     */
+    public boolean isGameOver(Piece[][] board) {
+        if (isCheckmate(board, true) || isCheckmate(board, false) || isStalemate(board, true) || isStalemate(board, false)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Method to change the turn
+     */
+    public void changeTurn() {
+        isWhiteTurn = !isWhiteTurn;
     }
 }
