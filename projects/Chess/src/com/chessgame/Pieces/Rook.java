@@ -1,9 +1,5 @@
 package Pieces;
 
-import Game.*;
-import Board.*;
-import java.util.Arrays;
-
 /**
  * Class for the rook piece
  */
@@ -72,5 +68,14 @@ public class Rook extends Piece {
         }
 
         return true;
+    }
+
+    public String toString() {
+        if (getIsWhite()) {
+            return "wR";
+        }
+        else {
+            return "bR";
+        }
     }
 }

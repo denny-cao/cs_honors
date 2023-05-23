@@ -23,11 +23,19 @@ public class Pawn extends Piece {
             // Check if pawn is moving forward one space
             if (Math.abs(startPos[0] - endPos[0]) == 1) {
                 // Check if pawn is moving forward one space and is white
-                if (startPos[0] - endPos[0] == 1 && getIsWhite()) {
+                if (startPos[0] - endPos[0] == -1 && getIsWhite()) {
+                    // Check if there is a piece in the way
+                    if (board[endPos[0]][endPos[1]] != null) {
+                        return false;
+                    }
                     return true;
                 }
                 // Check if pawn is moving forward one space and is black
-                else if (startPos[0] - endPos[0] == -1 && !getIsWhite()) {
+                else if (startPos[0] - endPos[0] == 1 && !getIsWhite()) {
+                    // Check if there is a piece in the way
+                    if (board[endPos[0]][endPos[1]] != null) {
+                        return false;
+                    }
                     return true;
                 }
                 else {
@@ -37,9 +45,9 @@ public class Pawn extends Piece {
             // Check if pawn is moving forward two spaces
             else if (Math.abs(startPos[0] - endPos[0]) == 2) {
                 // Check if pawn is moving forward two spaces and is white
-                if (startPos[0] - endPos[0] == 2 && getIsWhite()) {
+                if (startPos[0] - endPos[0] == -2 && getIsWhite()) {
                     // Check if pawn is in starting position
-                    if (startPos[0] == 6) {
+                    if (startPos[0] == 1) {
                         // Check if there are any pieces in the way
                         for (int i = startPos[0] - 1; i > endPos[0]; i--) {
                             if (board[i][startPos[1]] != null) {
@@ -52,9 +60,9 @@ public class Pawn extends Piece {
                     }
                 }
                 // Check if pawn is moving forward two spaces and is black
-                else if (startPos[0] - endPos[0] == -2 && !getIsWhite()) {
+                else if (startPos[0] - endPos[0] == 2 && !getIsWhite()) {
                     // Check if pawn is in starting position
-                    if (startPos[0] == 1) {
+                    if (startPos[0] == 6) {
                         // Check if there are any pieces in the way
                         for (int i = startPos[0] + 1; i < endPos[0]; i++) {
                             if (board[i][startPos[1]] != null) {
@@ -78,18 +86,22 @@ public class Pawn extends Piece {
         // Check if pawn is moving diagonally
         else if (Math.abs(startPos[1] - endPos[1]) == 1) {
             // Check if pawn is moving diagonally and is white
-            if (startPos[0] - endPos[0] == 1 && getIsWhite()) {
+            if (startPos[0] - endPos[0] == -1 && getIsWhite()) {
                 // Check if there is a piece in the way
                 if (board[endPos[0]][endPos[1]] == null) {
                     return false;
                 }
             }
             // Check if pawn is moving diagonally and is black
-            else if (startPos[0] - endPos[0] == -1 && !getIsWhite()) {
+            else if (startPos[0] - endPos[0] == 1 && !getIsWhite()) {
                 // Check if there is a piece in the way
                 if (board[endPos[0]][endPos[1]] == null) {
                     return false;
                 }
+            }
+            // Check that diagonal is opposite color
+            else if (board[endPos[0]][endPos[1]].getIsWhite() == getIsWhite()) {
+                return false;
             }
             else {
                 return false;
@@ -101,5 +113,14 @@ public class Pawn extends Piece {
         }
 
         return true;
+    }
+
+    public String toString() {
+        if (getIsWhite()) {
+            return "wP";
+        }
+        else {
+            return "bP";
+        }
     }
 }

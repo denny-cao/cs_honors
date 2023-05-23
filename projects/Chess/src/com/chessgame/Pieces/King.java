@@ -28,4 +28,13 @@ public class King extends Piece {
         }
         
     }
+
+    public String toString() {
+        if (getIsWhite()) {
+            return "wK";
+        }
+        else {
+            return "bK";
+        }
+    }
 }

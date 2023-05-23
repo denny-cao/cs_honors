@@ -108,4 +108,13 @@ public class Queen extends Piece {
 
         return true;
     }
+
+    public String toString() {
+        if (getIsWhite()) {
+            return "wQ";
+        }
+        else {
+            return "bQ";
+        }
+    }
 }

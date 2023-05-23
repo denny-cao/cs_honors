@@ -28,4 +28,13 @@ public class Knight extends Piece {
         }
         
     }
+
+    public String toString() {
+        if (getIsWhite()) {
+            return "wKn";
+        }
+        else {
+            return "bKn";
+        }
+    }
 }

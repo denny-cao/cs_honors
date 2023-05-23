@@ -1,9 +1,6 @@
 package Board;
 
-import java.util.*;
-import Player.*;
 import Pieces.*;
-import Game.*;
 
 /**
  * Represents the chess board.
@@ -24,12 +21,13 @@ public class Board {
     public void initializeBoard() {
         // Initialize the board with empty spaces
         for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLUMNS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
                 board[i][j] = null;
             }
         }
 
         // Initialize the board with pieces
+        
         // Initialize the white pieces
         board[0][0] = new Rook(true);
         board[0][1] = new Knight(true);
@@ -54,6 +52,35 @@ public class Board {
         for (int i = 0; i < COLUMNS; i++) {
             board[1][i] = new Pawn(true);
             board[6][i] = new Pawn(false);
+        }
+    }
+
+    /**
+     * Prints the board to the console. Includes the row and column labels. Even spacing based on piece name length.
+     */
+    public void printBoard() {
+        // Print the column labels
+        System.out.print("  ");
+        for (int i = 0; i < COLUMNS; i++) {
+            System.out.print(" " + (char) (i + 65) + " ");
+        }
+        System.out.println();
+
+        // Print the board
+        for (int i = 0; i < ROWS; i++) {
+            // Print the row labels
+            System.out.print(i + 1 + " ");
+
+            // Print the pieces
+            for (int j = 0; j < COLUMNS; j++) {
+                if (board[i][j] == null) {
+                    System.out.print("[ ]");
+                }
+                else {
+                    System.out.print("[" + board[i][j] + "]");
+                }
+            }
+            System.out.println();
         }
     }
 }

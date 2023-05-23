@@ -9,15 +9,15 @@ public class Player {
         this.isTurn = isWhite;
     }
     
-    public boolean isWhite() {
+    public boolean getIsWhite() {
         return isWhite;
     }
     
-    public boolean isTurn() {
+    public boolean getIsTurn() {
         return isTurn;
     }
     
-    public void setTurn(boolean isTurn) {
+    public void setIsTurn(boolean isTurn) {
         this.isTurn = isTurn;
     }
     
